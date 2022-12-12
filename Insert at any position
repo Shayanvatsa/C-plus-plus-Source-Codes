@@ -1,0 +1,109 @@
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+class node 
+{
+    public:
+	int info;
+	node* link;
+	void createList();
+	void insertAtPosition();
+	void display();
+};
+node* start = NULL;
+void createList()
+{
+	if (start == NULL) 
+	{
+		int n;
+		cout<<"Enter the number of nodes=";
+		cin>>n;
+		if (n != 0)
+		{
+			int data;
+			node* newnode=new node();
+			node* temp;
+			//newnode = (struct node*)malloc(sizeof(struct node));
+			start = newnode;
+			temp = start;
+			cout<<"\nEnter number to be inserted=";
+			cin>>data;
+			start->info = data;
+			for (int i = 1; i <n; i++) 
+			{
+				newnode =new node(); //(struct node*)malloc(sizeof(struct node));
+				temp->link = newnode;
+				cout<<"\nEnter number to be inserted=";
+				cin>>data;
+				newnode->info = data;
+				temp = temp->link;
+			}
+		}
+		cout<<"\nThe list is created\n\n";
+	}
+	else
+		cout<<"\nThe list is already created\n";
+}
+void display()
+{
+	node* temp;
+	if (start == NULL)
+	cout<<"\nList is empty\n";
+	else 
+	{
+		temp = start;
+		while (temp != NULL)
+		{
+			cout<<temp->info<<"\t";
+			temp = temp->link;
+		}
+		cout<<"\n\n";
+	}
+}
+void insertAtPosition()
+{
+	node *temp, *newnode=new node();
+	int pos,data,i = 1;
+	//newnode = (struct node*)malloc(sizeof(struct node));
+	cout<<"\nEnter position=";
+	cin>>pos;
+	cout<<"Enter data=";
+	cin>>data;
+	temp = start;
+	newnode->info = data;
+	newnode->link = 0;
+	while (i < pos - 1)
+	{
+		temp = temp->link;
+		i++;
+	}
+	newnode->link = temp->link;
+	temp->link = newnode;
+}
+int main()
+{
+    node obj;
+    obj.createList();
+	int choice;
+	while (1) 
+	{
+		cout<<"\t1. For insertion at any position\n\t2. Display list\n\t3. To exit\n";
+		cout<<"\nEnter Choice =";
+		cin>>choice;
+		switch (choice)
+		{
+		    case 1:
+			    obj.insertAtPosition();
+			break;
+		    case 2:
+			    obj.display();
+			break;
+			case 3:
+			    exit(0);
+			break;
+			default:
+			    cout<<"Incorrect Choice\n";
+		}
+	}
+	return 0;
+}
