@@ -1,0 +1,49 @@
+#include<iostream>
+using namespace std;
+class Book
+{
+    long ISBN;
+    char title[20],author[20];
+    int price;
+    public:
+    void read()
+    {
+        cout<<"\nEnter ISBN=";cin>>ISBN;
+        cout<<"\nEnter Title=";cin>>title;
+        cout<<"\nEnter Author=";cin>>author;
+        cout<<"\nEnter Price=";cin>>price;
+    }
+    void display()
+    {
+        cout<<"\nISBN="<<ISBN;
+        cout<<"\nTitle="<<title;
+        cout<<"\nAuthor="<<author;
+        cout<<"\nPrice="<<price;
+    }
+    long returnisbn() {return ISBN;}
+}
+b[10];
+int main()
+{
+    b[10];
+    int n,flag=0;long isbn;
+    cout<<"\nNo of Books=";cin>>n;
+    for(int i=0;i<n;i++)
+    {
+        b[i].read();
+    }
+    cout<<"Enter ISBN to be searched=";
+    cin>>isbn;
+    for(int i=0;i<n;i++)
+    {
+        if(isbn==b[i].returnisbn())
+        {
+            cout<<"\nBOOK found\n";
+            b[i].display();flag=1;
+            break;
+        }
+    }
+    if(flag==0)
+    cout<<"\nBOOK not found";
+    return 0;
+}
