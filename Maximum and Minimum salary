@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std; 
+class EMPLOYEE
+{
+    char name[20];
+    int emp_code, salary; 
+    public:
+        void read()
+        {
+            cout<<"Enter name="; 
+            cin>>name; 
+            cout<<"Enter Emp code="; 
+            cin>>emp_code; 
+            cout<<"Enter salary=";
+            cin>>salary;
+        }
+    void display()
+    {
+        cout<<"\nName"<<"\t\tEmp code"<<"\tsalary:"<<endl;
+        cout<<name<<"\t\t"<<emp_code<<"\t\t"<<salary<<endl;
+    }
+    int returnsal()
+    {
+        return salary;
+    }
+};
+int main()
+{
+    int n;
+    EMPLOYEE e[10],max,min;
+    cout<<"Enter no of employees=";
+    cin>>n;
+    cout<<"Enter details:-\n"; for(int i=0;i<n;i++)
+    e[i].read();
+    max=min=e[0];
+    for(int i=0;i<n;i++)
+    {
+        if(e[i].returnsal() >max.returnsal())
+        {
+            max=e[i];
+        }
+        else 
+        {
+            (e[i].returnsal()<min.returnsal());
+            min=e[i];
+        }
+    }
+    cout<<"\nMaximum salary:-\n"; max.display(); cout<<"\nMinimum salary:-\n"; min.display(); 
+    return 0;
+}
