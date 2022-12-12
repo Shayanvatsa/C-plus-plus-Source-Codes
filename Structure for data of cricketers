@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+struct cricketer
+{
+    char player_name[10];
+    char team_name[10];
+    float batting_average;
+}
+cric[10];
+int main()
+{
+    int i,n;
+    cout<<"Enter the max limit=";
+    cin>>n;
+    cout<<"Enter name of "<<n<<" players:-\n";
+    for(i=0;i<n;i++)
+    {
+        cin>>cric[i].player_name;
+    }
+    cout<<"Enter name of "<<n<<" teams:-\n";
+    for(i=0;i<n;i++)
+    {
+        cin>>cric[i].team_name;
+    }
+    cout<<"Enter batting average of "<<n<<" players:-\n";
+    for(i=0;i<n;i++)
+    {
+        cin>>cric[i].batting_average;
+    }
+    cout<<"player name\t"<<"team name\t"<<"batting average\n";
+    for(i=0;i<n;i++)
+    {
+        cout<<cric[i].player_name<<"\t\t"<<cric[i].team_name<<"\t\t"<<cric[i].batting_average<<"\n";
+    }
+}
