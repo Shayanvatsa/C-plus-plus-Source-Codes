@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+class circle
+{
+    public:
+    float r,ar;
+    float pi=3.14;
+    void Radius()
+    {
+        cout<<"Enter Radius=";
+        cin>>r;
+    }
+    void area()
+    {
+        ar=pi*r*r;
+    }
+    void display()
+    {
+        cout<<"Area="<<ar;
+    }
+    };
+    int main()
+    {
+        circle C;
+        C.Radius();
+        C.area();
+        C.display();
+        return 0;
+    }
