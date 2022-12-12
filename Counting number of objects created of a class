@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+class cont
+{
+    static int x;
+    public:
+        cont()
+        {
+            x++;
+        }
+        static void disp()
+        {
+            cout<<"Total objects="<<x<<endl;
+        }
+};
+int cont::x;
+int main()
+{
+    cont o1,o2;
+    o1.disp();
+    return 0;
+}
