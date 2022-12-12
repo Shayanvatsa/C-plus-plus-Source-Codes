@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+class student
+{
+    public: 
+    char name [20];
+    int reg; 
+    float m1,m2, m3;
+    void get_input()
+    {
+        cout<<"Enter student name:";
+        cin>>name;
+        cout<<"Enter registration no: ";
+        cin>>reg;
+        cout<<"Enter the marks in subject 1: ";
+        cin>>m1;
+        cout<<"Enter the marks in subject 2: "; 
+        cin>>m2;
+        cout<<"Enter the marks in subject 3: ";
+        cin>>m3;
+}
+float average()
+{
+    float avg = (m1+m2+m3)/3; 
+    return avg;
+}
+    void display()
+    {
+        cout<<"Name\t\t"<<"Reg no\t\t"<<"Subject 1\t\t"<<"Subject 2\t\t"<<"Subject 3\t\t"<<"Average marks\n";
+        cout<<name<<"\t\t"<<reg<<"\t\t"<<m1<<"\t\t\t"<<m2<<"\t\t\t"<<m3<<"\t\t\t"<<average()<<"\n";
+    }
+};
+int main()
+{
+    student s[20];
+    int n,i;
+    cout<<"Enter number of students=";
+    cin>>n;
+    for(i=0; i<n; i++)
+    {
+        cout<<"Enter details of student "<<i+1<<endl; 
+        s[i].get_input();
+    }
+    for(i=0; i<n; i++)
+    {
+        cout<<"\nDetails of student "<<i+1<<":-\n\n" ;
+        s[i].display();
+    }
+return 0;
+}
