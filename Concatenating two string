@@ -1,0 +1,35 @@
+#include<iostream>
+#include<string.h>
+using namespace std;
+class STRING 
+{
+    char str1[20];
+    char str2[20];
+    char str3[20];
+    public:
+    STRING(char s1[],char s2[])
+    {
+        strcpy(str1,s1);
+        strcpy(str2,s2);
+    }
+    void join()
+    {
+        strcpy(str3,strcat(str1,str2));
+    }
+    void display()
+    {
+        cout<<"Concatenated String : "<<str3<<endl;
+    }
+};
+int main()
+{
+    char s1[20],s2[20];
+    cout<<"Enter the string 1:\n";
+    cin>>s1;
+    cout<<"Enter the string 2:\n";
+    cin>>s2;
+    STRING s(s1,s2);
+    s.join();
+    s.display();
+    return 0;
+}
