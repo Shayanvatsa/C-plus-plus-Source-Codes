@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+class EMPLOYEE
+{
+    public: 
+    int Employee_Number;
+    char Employee_Name [20];
+    float basic, net_sal, DA, IT;
+    void get_input()
+    {
+        cout<<"Enter employee number=";
+        cin>>Employee_Number;
+        cout<<"Enter employee name=";
+        cin>>Employee_Name;
+        cout<<"Enter employee basic salary=";
+        cin>>basic; 
+    }
+    float calc_net_sal()
+    {
+        DA=(52*basic)/100;
+        float gross=DA+basic;
+        IT=(30*gross)/100;
+        return gross-IT;
+    }
+    void display()
+    {
+        cout<<"\nEmployee Details:-\n\n";
+        cout<<"Employee Number"<<"\t\tEmployee Name"<<"\t\tBasic Salary"<<"\t\tDA"<<"\t\tIT"<<"\t\tNet Salary\n";
+        cout<<Employee_Number<<"\t\t\t"<<Employee_Name<<"\t\t\t"<<basic<<"\t\t\t"<<DA<<"\t\t"<<IT<<"\t\t"<<calc_net_sal();
+    }
+};
+int main()
+{
+    EMPLOYEE emp1;
+    emp1.get_input();
+    emp1.calc_net_sal();
+    emp1.display();
+    return 0;
+}
