@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+class abc
+{
+    int x;
+    public:
+        void read()
+        {
+            cout<<"Enter any number=";
+            cin>>x;
+        }
+        void display()
+        {
+            cout<<"\nValue of x="<<x<<endl;
+        }
+        void operator -()
+        {
+            x=-x;
+        }
+};
+int main()
+{
+    abc ob;
+    ob.read();
+    -ob;
+    ob.display();
+    return 0;
+}
