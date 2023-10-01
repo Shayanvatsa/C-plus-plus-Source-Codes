@@ -1,0 +1,139 @@
+#include<iostream>
+#include<vector>
+#include<string>
+
+using namespace std;
+
+struct Groceryitem{
+    string name;
+    double price;
+    int quantity;
+};
+
+void addGroceryitem(vector<Groceryitem>& grocerylist){
+    Groceryitem newitem;
+    cout<<"Enter the name of the item:";
+    cin>>newitem.name;
+    cout<<"Enter the price of the item:";
+    cin>>newitem.price;
+    cout<<"Enter the quantity of the item:";
+    cin>>newitem.quantity;
+    grocerylist.push_back(newitem);
+    cout<<"Item add successfully!!"<<endl;
+}
+
+void viewGrocerylist(const vector<Groceryitem>& grocerylist){
+    if(grocerylist.empty()){
+        cout<<"no item in the grocery list."<<endl;
+        return ;
+    }
+    cout<<"Grocery List:"<<endl;
+    cout<<"----------------------------------------------------------"<<endl;
+    cout<<"Name\t\tPrice\t\tQuantity"<<endl;
+    cout<<"----------------------------------------------------------"<<endl;
+    for(const Groceryitem&item : grocerylist){
+        cout<<item.name<<"\t\t"<<item.price<<"\t\t"<<item.quantity<<endl;
+    }
+    cout<<"----------------------------------------------------------"<<endl;
+}
+
+double calculationtotalcost(const vector<Groceryitem>& grocerylist){
+    double totalcost=0.0;
+    for(const Groceryitem& item : grocerylist){
+        totalcost +=item.price*item.quantity;
+    }
+    return totalcost;
+}
+
+void buyitems(vector<Groceryitem>& grocerylist){
+    if(grocerylist.empty()){
+        cout<<"No item in the grocery list and cannot generate the bill"<<endl;
+        return ;
+    }
+    double totalbill =0.0;
+    cout<<"ENter the item you want to buy(Enter 'done' to finish):"<<endl;
+    while(true){
+        string itemname;
+        cout<<"Enter item name:";
+        cin>>itemname;
+        if(itemname=="done"){
+            break;
+        }
+        int quantitytobuy;
+        cout<<"Enter quantity to buy:";
+        cin>>quantitytobuy;
+        for(Groceryitem& item:grocerylist){
+            if(item.name==itemname){
+                if(item.quantity>=quantitytobuy){
+                    item.quantity-=quantitytobuy;
+                    totalbill+=item.price*quantitytobuy;
+                }
+                else{
+                    cout<<"Insufficient quantity available for"<<itemname<<endl;
+                }
+                break;
+            }
+        }
+    }
+    cout<<"Total Bill:"<<totalbill<<endl;
+}
+
+void updateInventory(vector<Groceryitem>& grocerylist){
+    if(grocerylist.empty()){
+        cout<<"No item in the grocery list and cannot update inventory"<<endl;
+        return ;
+    }
+    string itemname;
+    cout<<"Enter the name of the item to update:";
+    cin>>itemname;
+    for(Groceryitem& item :grocerylist){
+        if(item.name==itemname){
+            int newquantity;
+            cout<<"Enter the new quantity for"<<itemname<<";";
+            cin>>newquantity;
+            item.quantity=newquantity;
+            cout<<"Inventory update successfully!!"<<endl;
+            return ;
+        }
+    }
+    cout<<"Item not found in the grocery list."<<endl;
+}
+
+int main(){
+    vector<Groceryitem> grocerylist;
+    int choice;
+    do{
+        cout<<"Grocery Management System"<<endl;
+        cout<<"1.Add grocery item"<<endl;
+        cout<<"2.View grocery item"<<endl;
+        cout<<"3.Calculate total cost"<<endl;
+        cout<<"4.Buy items and generate bill"<<endl;
+        cout<<"5.Update inventory"<<endl;
+        cout<<"6.Exit"<<endl;
+        cout<<"Enter your choice:";
+        cin>>choice;
+        switch(choice){
+            case 1:
+                addGroceryitem(grocerylist);
+                break;
+            case 2:
+                viewGrocerylist(grocerylist);
+            case 3:
+                cout<<"Total cost:"<<calculationtotalcost(grocerylist)<<endl;
+                break;
+            case 4:
+                buyitems(grocerylist);
+                break;
+            case 5:
+                updateInventory(grocerylist);
+                break;
+            case 6:
+                cout<<"Exiting the program"<<endl;
+                break;
+            default:
+                cout<<"Invalif choice please try again"<<endl;
+        }
+
+    }while(choice!=6);
+    return 0;
+}
