@@ -19,12 +19,12 @@ void addGroceryitem(vector<Groceryitem>& grocerylist){
     cout<<"Enter the quantity of the item:";
     cin>>newitem.quantity;
     grocerylist.push_back(newitem);
-    cout<<"Item add successfully!!"<<endl;
+    cout<<"Item added successfully!!"<<endl;
 }
 
 void viewGrocerylist(const vector<Groceryitem>& grocerylist){
     if(grocerylist.empty()){
-        cout<<"no item in the grocery list."<<endl;
+        cout<<"No item in the grocery list."<<endl;
         return ;
     }
     cout<<"Grocery List:"<<endl;
@@ -51,7 +51,7 @@ void buyitems(vector<Groceryitem>& grocerylist){
         return ;
     }
     double totalbill =0.0;
-    cout<<"ENter the item you want to buy(Enter 'done' to finish):"<<endl;
+    cout<<"Enter the item you want to buy(Enter 'done' to finish):"<<endl;
     while(true){
         string itemname;
         cout<<"Enter item name:";
@@ -128,10 +128,10 @@ int main(){
                 updateInventory(grocerylist);
                 break;
             case 6:
-                cout<<"Exiting the program"<<endl;
+                cout<<"Thanks for Visiting!"<<endl;
                 break;
             default:
-                cout<<"Invalif choice please try again"<<endl;
+                cout<<"Invalid choice please try again"<<endl;
         }
 
     }while(choice!=6);
